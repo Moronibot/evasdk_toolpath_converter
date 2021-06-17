@@ -1,0 +1,905 @@
+{
+    "metadata": {
+        "analog_modes": {
+            "i0": "voltage",
+            "i1": "voltage",
+            "o0": "voltage",
+            "o1": "voltage"
+        },
+        "default_max_speed": 0.25,
+        "next_label_id": 54,
+        "payload": 0,
+        "tcp_config": {
+            "offsets": {
+                "x": -0.078,
+                "y": 0,
+                "z": 0.042
+            },
+            "radius": 0.025,
+            "rotations": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            }
+        },
+        "version": 2
+    },
+    "routines": [
+        {
+            "name": "Mag_Pick",
+            "timeline": [
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "end_effector",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": true
+                },
+                {
+                    "trajectory": "joint_space",
+                    "type": "trajectory",
+                    "waypoint_id": 1
+                },
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "end_effector",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": false
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 0
+                },
+                {
+                    "io": {
+                        "index": 1,
+                        "location": "end_effector",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": true
+                },
+                {
+                    "condition": {
+                        "duration": 0.5,
+                        "type": "time"
+                    },
+                    "type": "wait"
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 8
+                },
+                {
+                    "io": {
+                        "index": 1,
+                        "location": "end_effector",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": false
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 2
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 1
+                }
+            ]
+        },
+        {
+            "name": "Demo_Drop",
+            "timeline": [
+                {
+                    "trajectory": "joint_space",
+                    "type": "trajectory",
+                    "waypoint_id": 5
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 4
+                },
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "end_effector",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": true
+                },
+                {
+                    "condition": {
+                        "duration": 1,
+                        "type": "time"
+                    },
+                    "type": "wait"
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 5
+                },
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "end_effector",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": false
+                }
+            ]
+        },
+        {
+            "name": "Coupon_Dispense",
+            "timeline": [
+                {
+                    "trajectory": "joint_space",
+                    "type": "trajectory",
+                    "waypoint_id": 9
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 10
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 11
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 12
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 11
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 10
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 9
+                }
+            ]
+        },
+        {
+            "name": "ToxOp",
+            "timeline": [
+                {
+                    "trajectory": "joint_space",
+                    "type": "trajectory",
+                    "waypoint_id": 19
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 16
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 15
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 26
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 14
+                },
+                {
+                    "io": {
+                        "index": 1,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": true
+                },
+                {
+                    "condition": {
+                        "duration": 2,
+                        "type": "time"
+                    },
+                    "type": "wait"
+                },
+                {
+                    "io": {
+                        "index": 1,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": false
+                },
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": true
+                },
+                {
+                    "condition": {
+                        "duration": 1,
+                        "type": "time"
+                    },
+                    "type": "wait"
+                },
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": false
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 26
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 17
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 18
+                },
+                {
+                    "io": {
+                        "index": 1,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": true
+                },
+                {
+                    "condition": {
+                        "duration": 2,
+                        "type": "time"
+                    },
+                    "type": "wait"
+                },
+                {
+                    "io": {
+                        "index": 1,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": false
+                },
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": true
+                },
+                {
+                    "condition": {
+                        "duration": 1,
+                        "type": "time"
+                    },
+                    "type": "wait"
+                },
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": false
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 17
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 22
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 23
+                },
+                {
+                    "io": {
+                        "index": 1,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": true
+                },
+                {
+                    "condition": {
+                        "duration": 2,
+                        "type": "time"
+                    },
+                    "type": "wait"
+                },
+                {
+                    "io": {
+                        "index": 1,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": false
+                },
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": true
+                },
+                {
+                    "condition": {
+                        "duration": 1,
+                        "type": "time"
+                    },
+                    "type": "wait"
+                },
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": false
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 22
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 24
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 25
+                },
+                {
+                    "io": {
+                        "index": 1,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": true
+                },
+                {
+                    "condition": {
+                        "duration": 2,
+                        "type": "time"
+                    },
+                    "type": "wait"
+                },
+                {
+                    "io": {
+                        "index": 1,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": false
+                },
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": true
+                },
+                {
+                    "condition": {
+                        "duration": 1,
+                        "type": "time"
+                    },
+                    "type": "wait"
+                },
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "base",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": false
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 24
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 15
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 16
+                },
+                {
+                    "trajectory": "linear",
+                    "type": "trajectory",
+                    "waypoint_id": 19
+                }
+            ]
+        }
+    ],
+    "timeline": [
+        {
+            "type": "home",
+            "waypoint_id": 3
+        },
+        {
+            "io": {
+                "index": 0,
+                "location": "end_effector",
+                "type": "digital"
+            },
+            "type": "output-set",
+            "value": true
+        },
+        {
+            "condition": {
+                "duration": 1,
+                "type": "time"
+            },
+            "type": "wait"
+        },
+        {
+            "io": {
+                "index": 0,
+                "location": "end_effector",
+                "type": "digital"
+            },
+            "type": "output-set",
+            "value": false
+        },
+        {
+            "cols": 3,
+            "rows": 20,
+            "timeline": [
+                {
+                    "trajectory": "joint_space",
+                    "type": "trajectory",
+                    "waypoint_id": 3
+                },
+                {
+                    "routine": "Coupon_Dispense",
+                    "type": "call-routine"
+                },
+                {
+                    "trajectory": "joint_space",
+                    "type": "trajectory",
+                    "waypoint_id": 1
+                },
+                {
+                    "routine": "Mag_Pick",
+                    "type": "call-routine"
+                },
+                {
+                    "trajectory": "joint_space",
+                    "type": "trajectory",
+                    "waypoint_id": 3
+                },
+                {
+                    "trajectory": "joint_space",
+                    "type": "trajectory",
+                    "waypoint_id": 20
+                },
+                {
+                    "routine": "ToxOp",
+                    "type": "call-routine"
+                },
+                {
+                    "trajectory": "joint_space",
+                    "type": "trajectory",
+                    "waypoint_id": 20
+                },
+                {
+                    "trajectory": "joint_space",
+                    "type": "trajectory",
+                    "waypoint_id": 3
+                },
+                {
+                    "type": "grid-waypoint"
+                },
+                {
+                    "type": "grid-waypoint",
+                    "z_offset": -0.05
+                },
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "end_effector",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": true
+                },
+                {
+                    "condition": {
+                        "duration": 0.5,
+                        "type": "time"
+                    },
+                    "type": "wait"
+                },
+                {
+                    "io": {
+                        "index": 0,
+                        "location": "end_effector",
+                        "type": "digital"
+                    },
+                    "type": "output-set",
+                    "value": false
+                },
+                {
+                    "type": "grid-waypoint"
+                }
+            ],
+            "type": "grid",
+            "w0": 5,
+            "wx": 7,
+            "wy": 6
+        },
+        {
+            "trajectory": "joint_space",
+            "type": "trajectory",
+            "waypoint_id": 3
+        }
+    ],
+    "waypoints": [
+        {
+            "joints": [
+                1.9806024,
+                -0.7310693,
+                -2.0505528,
+                -1.5262591,
+                -0.13095327,
+                1.8834124
+            ],
+            "label_id": 7,
+            "label_text": "Mag_Pick"
+        },
+        {
+            "joints": [
+                2.2548044,
+                -0.26211995,
+                -2.573208,
+                -1.8103163e-06,
+                -0.3062648,
+                0.65559196
+            ],
+            "label_id": 13
+        },
+        {
+            "joints": [
+                2.0159497,
+                -0.6088831,
+                -2.2345786,
+                -1.1525909,
+                -0.11377132,
+                1.5532268
+            ],
+            "label_id": 14
+        },
+        {
+            "joints": [
+                1.4384602,
+                0.5141474,
+                -2.4743545,
+                -3.2258507e-05,
+                -1.1813906,
+                0.64657474
+            ],
+            "label_id": 17
+        },
+        {
+            "joints": [
+                1.3440127,
+                -0.96271735,
+                -1.698436,
+                2.9027631,
+                -1.1325395,
+                0.10227921
+            ],
+            "label_id": 19
+        },
+        {
+            "joints": [
+                1.3590412,
+                -0.7709143,
+                -1.7885828,
+                2.9070222,
+                -1.0319147,
+                0.12086039
+            ],
+            "label_id": 20
+        },
+        {
+            "joints": [
+                1.2937723,
+                -0.4903058,
+                -2.2673328,
+                2.8589768,
+                -1.2311646,
+                0.09750308
+            ],
+            "label_id": 21
+        },
+        {
+            "joints": [
+                1.1272597,
+                -0.8909237,
+                -1.5917468,
+                2.623929,
+                -1.0101786,
+                0.30058816
+            ],
+            "label_id": 22
+        },
+        {
+            "joints": [
+                1.9823142,
+                -0.70997983,
+                -2.069004,
+                -1.504907,
+                -0.13168995,
+                1.8634902
+            ],
+            "label_id": 23
+        },
+        {
+            "joints": [
+                2.247261,
+                -0.073752955,
+                -2.6403277,
+                -0.044451408,
+                -0.3792928,
+                -0.8884906
+            ],
+            "label_id": 28
+        },
+        {
+            "joints": [
+                2.0792444,
+                -0.47571045,
+                -2.1157522,
+                4.4825026e-07,
+                -0.5501305,
+                -1.1034708
+            ],
+            "label_id": 30
+        },
+        {
+            "joints": [
+                2.0792444,
+                -0.53839433,
+                -2.1033502,
+                6.1825557e-07,
+                -0.49984872,
+                -1.1034703
+            ],
+            "label_id": 32
+        },
+        {
+            "joints": [
+                2.124185,
+                -0.42799565,
+                -2.271583,
+                1.0275692e-06,
+                -0.44201514,
+                -1.0585297
+            ],
+            "label_id": 33
+        },
+        {
+            "joints": [
+                1.3440958,
+                -0.9545487,
+                -1.7028666,
+                2.9023802,
+                -1.1242505,
+                0.103546865
+            ],
+            "label_id": 34
+        },
+        {
+            "joints": [
+                -1.561476,
+                -0.07086679,
+                -2.610745,
+                -0.00010424011,
+                -0.4602319,
+                0.010281467
+            ],
+            "label_id": 39
+        },
+        {
+            "joints": [
+                -1.5743917,
+                0.34323868,
+                -2.6014233,
+                -0.00086289056,
+                -1.0362357,
+                -0.0047938363
+            ],
+            "label_id": 41
+        },
+        {
+            "joints": [
+                -1.5739124,
+                0.99893963,
+                -2.564319,
+                -0.0012463975,
+                -1.9838812,
+                -0.0044103293
+            ],
+            "label_id": 43
+        },
+        {
+            "joints": [
+                -1.5618799,
+                -0.07344035,
+                -2.554075,
+                -9.422184e-05,
+                -0.5143274,
+                0.009866438
+            ],
+            "label_id": 44
+        },
+        {
+            "joints": [
+                -1.5618792,
+                -0.12728894,
+                -2.5479856,
+                -0.00010307234,
+                -0.466568,
+                0.009877008
+            ],
+            "label_id": 45
+        },
+        {
+            "joints": [
+                -1.5779765,
+                0.963027,
+                -1.7734402,
+                1.1247572e-06,
+                -2.331103,
+                -0.008089357
+            ],
+            "label_id": 46
+        },
+        {
+            "joints": [
+                0.3608416,
+                1.0110649,
+                -1.7719926,
+                -0.00012602426,
+                -2.3806887,
+                1.0623444
+            ],
+            "label_id": 47
+        },
+        {
+            "joints": [
+                -1.5466282,
+                -0.10052881,
+                -2.5508952,
+                -9.0301175e-05,
+                -0.49041983,
+                0.02511557
+            ],
+            "label_id": 48
+        },
+        {
+            "joints": [
+                -1.5313854,
+                -0.07456781,
+                -2.552859,
+                -7.863443e-05,
+                -0.51441544,
+                0.04034742
+            ],
+            "label_id": 49
+        },
+        {
+            "joints": [
+                -1.5313882,
+                -0.1283439,
+                -2.5467784,
+                -8.598842e-05,
+                -0.46672,
+                0.040352907
+            ],
+            "label_id": 50
+        },
+        {
+            "joints": [
+                -1.5301191,
+                -0.02855323,
+                -2.6014028,
+                -7.833051e-05,
+                -0.51188636,
+                0.041613545
+            ],
+            "label_id": 51
+        },
+        {
+            "joints": [
+                -1.5301222,
+                -0.08532638,
+                -2.5950046,
+                -8.609657e-05,
+                -0.4615117,
+                0.041619334
+            ],
+            "label_id": 52
+        },
+        {
+            "joints": [
+                -1.5614724,
+                -0.013032498,
+                -2.6172602,
+                -9.4539304e-05,
+                -0.5115506,
+                0.01027424
+            ],
+            "label_id": 53
+        }
+    ]
+}
