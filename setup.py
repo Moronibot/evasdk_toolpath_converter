@@ -7,8 +7,7 @@ import os
 WORKFLOW_PATH = 'Convert_Toolpath.workflow/Contents/document.wflow'
 
 PATH_TO_EXE = "/".join(os.getcwd().split('/')[3::])
-REPO_FOLDER = "/".join(os.getcwd().split('/')[-1::])
-CMD_PATH = f"./{PATH_TO_EXE}/{REPO_FOLDER}/dist/converter $@"
+CMD_PATH = f"./{PATH_TO_EXE}/dist/converter $@"
 STR_TO_REPLACE = "INSERT_CMD_STR"
 
 def set_command_string_in_workflow():
