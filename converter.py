@@ -1,20 +1,8 @@
 import base64
+import binascii
 import json
 import os
 from sys import argv
-import PySimpleGUI
-
-
-def logger(msg):
-    logfile = open("log.txt", 'a+')
-    logfile.write(msg + "\n")
-    logfile.close()
-
-
-def error_popup(error_title, error_msg):
-    logger(error_msg)
-    PySimpleGUI.Popup(error_title, error_msg)
-    raise SystemExit
 
 
 class ToolpathConverter:
@@ -36,15 +24,15 @@ class ToolpathConverter:
         """ Converts from base64 to plaintext. """
         try:
             self.converted_toolpath = base64.b64decode(self.abs_filepath)
-        except TypeError as e:
-            error_popup("ERROR CONVERTING B64", e)
+        except (TypeError, binascii.Error):
+            raise RuntimeError("ERROR CONVERTING B64: Corrupted")
 
     def valid_json(self):
         """ Checks that the converted toolpath is a valid JSON """
         try:
             self.converted_toolpath = json.loads(self.converted_toolpath)
-        except (ValueError, TypeError) as e:
-            error_popup("ERROR - NOT A VALID JSON", e)
+        except (ValueError, TypeError):
+            raise RuntimeError("ERROR - NOT A VALID JSON")
 
     def main(self):
         """ Main running block """
@@ -55,8 +43,6 @@ class ToolpathConverter:
 
 if __name__ == '__main__':
     if not len(argv) > 1:
-        error_popup("No file specified", "No args passed to executable")
-        quit()
-    logger(str(argv))
+        raise RuntimeError("No file specified")
     convert_file = ToolpathConverter(argv[1])
     convert_file.main()
