@@ -18,16 +18,19 @@ def check_if_file(filepath):
     return True if os.path.isfile(filepath) else False
 
 
-def good_bad_toolpath_rename(filepath, good_bad):
-    sep = "_"
-    dir_path, filename = os.path.split(filepath)
-    split_filename = filename.split(sep)
-    if good_bad:
-        split_filename.insert(2, "GOOD")
-    if not good_bad:
-        split_filename.insert(2, "BAD")
-    joined_filename = sep.join(split_filename)
-    os.rename(os.path.join(dir_path,filename), joined_filename)
+def good_bad_toolpath_rename(filepath, good_bad, formatted):
+    """ If it is from the clipboard then it's listed as either good or bad. """
+    if formatted:
+        sep = "_"
+        dir_path, filename = os.path.split(filepath)
+        split_filename = filename.split(sep)
+        if good_bad:
+            split_filename.insert(2, "GOOD")
+        if not good_bad:
+            split_filename.insert(2, "BAD")
+        joined_filename = sep.join(split_filename)
+        os.rename(os.path.join(dir_path, filename), joined_filename)
+
 
 def timestamp():
     """ Simple timestamp to reduce the likelihood of duplicate files. """
