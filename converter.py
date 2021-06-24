@@ -3,12 +3,13 @@ import binascii
 import json
 import os
 from sys import argv
-from converter_utils import check_if_file, check_if_b64, save_original_string
+from converter_utils import check_if_file, decode_b64, save_original_string, good_bad_toolpath_rename
 
 
 class ToolpathConverter:
     def __init__(self, abs_filepath):
-        self.abs_filepath = open(abs_filepath, 'r').read()
+        self.abs_filepath = abs_filepath
+        self.abs_filepath_contents = open(abs_filepath, 'r').read()
         self.converted_toolpath = None
         self.pretty_json = None
         self.filepath, self.filename = os.path.split(abs_filepath)
@@ -24,7 +25,7 @@ class ToolpathConverter:
     def b64_text(self):
         """ Converts from base64 to plaintext. """
         try:
-            self.converted_toolpath = base64.b64decode(self.abs_filepath)
+            self.converted_toolpath = base64.b64decode(self.abs_filepath_contents)
         except (TypeError, binascii.Error):
             raise RuntimeError("ERROR CONVERTING B64: CORRUPTED")
 
@@ -32,7 +33,8 @@ class ToolpathConverter:
         """ Checks that the converted toolpath is a valid JSON """
         try:
             self.converted_toolpath = json.loads(self.converted_toolpath)
-        except (ValueError, TypeError):
+        except (UnicodeDecodeError, TypeError):
+            good_bad_toolpath_rename(self.abs_filepath, good_bad=False)
             raise RuntimeError("ERROR - NOT A VALID JSON")
 
     def main(self):
@@ -45,6 +47,13 @@ class ToolpathConverter:
 if __name__ == '__main__':
     if not len(argv) > 1:
         raise RuntimeError("No argument passed!")
-    if check_if_file(argv[1]):
-        convert_file = ToolpathConverter(argv[1])
+    cli_argv = argv[1]
+    if decode_b64(cli_argv):
+        cli_argv = save_original_string(cli_argv)
+    if check_if_file(cli_argv):
+        convert_file = ToolpathConverter(cli_argv)
         convert_file.main()
+    else:
+        raise RuntimeError("UNEXPECTED INPUT")
+
+
