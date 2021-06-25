@@ -16,4 +16,4 @@ clean:
 	rm -f converter.spec
 	rm -rf ~/Library/Services/Convert_Toolpath.workflow
 	rm -rf ~/Library/Services/Save_Convert_Toolpath.workflow
-	rm -rf ~/Toolpaths
+	rm -rf Toolpaths

@@ -7,11 +7,15 @@ import os
 FILE_CONVERTER_PATH = 'Convert_Toolpath.workflow/Contents/document.wflow'
 SAVE_CONVERTER_PATH = 'Save_Convert_Toolpath.workflow/Contents/document.wflow'
 
+PATH_TO_EXE = "/".join(os.getcwd().split('/')[3::])
+
+CLI_CMD = {FILE_CONVERTER_PATH: f"./{PATH_TO_EXE}/dist/converter --ACT_FILE $@",
+           SAVE_CONVERTER_PATH: f"./{PATH_TO_EXE}/dist/converter --CLIPBOARD $@"}
+
 WORKFLOW_LIST = [FILE_CONVERTER_PATH, SAVE_CONVERTER_PATH]
 
-PATH_TO_EXE = "/".join(os.getcwd().split('/')[3::])
-CMD_PATH = f"./{PATH_TO_EXE}/dist/converter $@"
 STR_TO_REPLACE = "INSERT_CMD_STR"
+
 
 def set_command_string_in_workflow():
     """ Searches for STR_TO_REPLACE and writes the correct path to the file """
@@ -22,7 +26,7 @@ def set_command_string_in_workflow():
 
         for n_line, file_contents in enumerate(loaded_workflow):
             if STR_TO_REPLACE in file_contents:
-                loaded_workflow[n_line] = file_contents.replace(STR_TO_REPLACE, CMD_PATH)
+                loaded_workflow[n_line] = file_contents.replace(STR_TO_REPLACE, CLI_CMD[workflow])
 
         with open(workflow, "w") as workflow_file:
             workflow_file.writelines(loaded_workflow)
