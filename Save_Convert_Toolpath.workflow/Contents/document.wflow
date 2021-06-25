@@ -59,7 +59,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>./PycharmProjects/evasdk_toolpath_converter/dist/converter $@</string>
+					<string>INSERT_CMD_STR</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
