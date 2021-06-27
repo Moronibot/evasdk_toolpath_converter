@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d62e3ea01859e6b83c147255840138cf7c9bfe65807f02f486c89e974d15777d"
+            "sha256": "c01c76be20a463b39760f99437d8ceba764141a689cc547b2012e7a83fbc93a4"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -33,11 +33,11 @@
         },
         "isort": {
             "hashes": [
-                "sha256:0a943902919f65c5684ac4e0154b1ad4fac6dcaa5d9f3426b732f1c8b5419be6",
-                "sha256:2bb1680aad211e3c9944dbce1d4ba09a989f04e238296c87fe2139faa26d655d"
+                "sha256:83510593e07e433b77bd5bff0f6f607dbafa06d1a89022616f02d8b699cfcd56",
+                "sha256:8e2c107091cfec7286bc0f68a547d0ba4c094d460b732075b6fba674f1035c0c"
             ],
-            "markers": "python_version >= '3.6' and python_version < '4.0'",
-            "version": "==5.8.0"
+            "markers": "python_version < '4.0' and python_full_version >= '3.6.1'",
+            "version": "==5.9.1"
         },
         "lazy-object-proxy": {
             "hashes": [
@@ -91,10 +91,10 @@
         },
         "pyinstaller-hooks-contrib": {
             "hashes": [
-                "sha256:27558072021857d89524c42136feaa2ffe4f003f1bdf0278f9b24f6902c1759c",
-                "sha256:892310e6363655838485ee748bf1c5e5cade7963686d9af8650ee218a3e0b031"
+                "sha256:57964f93eb69255c49159ffdf052aae893feed223b0f69773dfd010ca6c569d9",
+                "sha256:7f5d0689b30da3092149fc536a835a94045ac8c9f0e6dfb23ac171890f5ea8f2"
             ],
-            "version": "==2021.1"
+            "version": "==2021.2"
         },
         "pylint": {
             "hashes": [
@@ -103,14 +103,6 @@
             ],
             "index": "pypi",
             "version": "==2.8.3"
-        },
-        "pysimplegui": {
-            "hashes": [
-                "sha256:50ee19325715c9170afeb184b9afc80d8f069b93043a6ec25d42d5946592f0ac",
-                "sha256:94aba97bec313d9041c8ff0ccbcf584ecfb187834d5ed3dc9b9e8264ef8451fe"
-            ],
-            "index": "pypi",
-            "version": "==4.44.0"
         },
         "toml": {
             "hashes": [

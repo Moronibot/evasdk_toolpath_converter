@@ -1,5 +1,6 @@
-import base64
-import binascii
+"""
+Converter_utls.py: Chucking in the random code snippets here to keep things tidy.
+"""
 import os
 import time
 
@@ -16,14 +17,11 @@ def generate_filename():
 
 def save_original_string(str_to_save, save_filepath="Toolpaths"):
     """
-    Saves the text passed to it providing it's a valid base64 string.
+    Saves the text passed to it.
     Returns the filename only as the default folder is set via setup.py
     """
     joined_filepath = os.path.join(save_filepath, generate_filename())
-    if decode_b64(str_to_save):
-        file = open(joined_filepath, 'w')
+    with open(joined_filepath, 'w') as file:
         file.write(str_to_save)
         file.close()
-        return joined_filepath
-    else:
-        return False
+    return joined_filepath
